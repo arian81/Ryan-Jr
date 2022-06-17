@@ -57,8 +57,8 @@ def bot_start():
 
     async def addrole(message):
         user = message.author
-        guild = bot.get_guild(os.getenv("GUILD_ID"))
-        role = guild.get_role(os.getenv("ROLE_ID"))
+        guild = bot.get_guild(int(os.getenv("GUILD_ID")))
+        role = guild.get_role(int(os.getenv("ROLE_ID")))
         for i in guild.members:
             if i.id == user.id:
                 proper_user = i
