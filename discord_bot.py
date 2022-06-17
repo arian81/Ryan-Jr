@@ -2,8 +2,12 @@ from email import message
 import discord
 from discord.ext import commands
 import re
+import os
+from dotenv import load_dotenv
 from database import *
 
+
+load_dotenv()
 
 def bot_start():
     intents = discord.Intents.default()
@@ -53,11 +57,11 @@ def bot_start():
 
     async def addrole(message):
         user = message.author
-        guild = bot.get_guild(979116054221586463)
-        role = guild.get_role(986494451247628298)
+        guild = bot.get_guild(os.getenv("GUILD_ID"))
+        role = guild.get_role(os.getenv("ROLE_ID"))
         for i in guild.members:
             if i.id == user.id:
                 proper_user = i
         await proper_user.add_roles(role)
-        await message.channel.send(f"Role was added!")
-    bot.run("OTg2NDA2NzczOTI3ODU0MTYy.GFsuYY.6RBHI25WzqH9fTXU3dtMtBf4-t8geotpbxOFp0")
+        await message.channel.send(f"You are now a verified student. Enjoy the server :)")
+    bot.run(os.getenv("BOT_TOKEN"))
