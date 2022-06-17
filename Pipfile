@@ -4,15 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-discord-py-interactions = "*"
 "discord.py" = "*"
-pandas = "*"
 sqlalchemy = "*"
-jupyter = "*"
-xlrd = "*"
-openpyxl = "*"
-pip = "*"
-install = "*"
 psycopg2-binary = "*"
 
 [dev-packages]
