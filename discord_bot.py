@@ -64,4 +64,13 @@ def bot_start():
                 proper_user = i
         await proper_user.add_roles(role)
         await message.channel.send(f"You are now a verified student. Enjoy the server :)")
+    @bot.command()
+    #if password is correct, query the database and add the user to the server
+    async def add(message, email):
+        if message.author.id == int(os.getenv("ADMIN_ID")):
+            add_user(email)
+            await message.channel.send("User added to database.")
+        else:
+            await message.channel.send("Your not authorized to use this command.")
+
     bot.run(os.getenv("BOT_TOKEN"))
