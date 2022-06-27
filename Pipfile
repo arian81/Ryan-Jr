@@ -9,9 +9,15 @@ sqlalchemy = "*"
 psycopg2-binary = "*"
 python-daemon = "*"
 python-dotenv = "*"
+selenium = "*"
+chromedriver-autoinstaller = "*"
 
 [dev-packages]
 autopep8 = "*"
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
