@@ -1,5 +1,8 @@
-from discord_bot import bot_start
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+print("e")
+from discord_bot import bot
 
-if __name__ == '__main__':
-    bot_start()
+bot.run(os.getenv("BOT_TOKEN"))

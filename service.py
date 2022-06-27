@@ -1,5 +1,9 @@
 import daemon
-from discord_bot import bot_start
+from discord_bot import bot
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 with daemon.DaemonContext():
-    bot_start()
+    bot.run(os.getenv("BOT_TOKEN"))
