@@ -1,22 +1,18 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import *
-
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-driver = webdriver.Chrome("chromedriver", options=chrome_options)
+import requests
+import re
 
 
 def check_new_video():
-    driver.get("https://www.youtube.com/channel/UC7gXXzu2D5rSu3NH4DJw9cw/videos")
-    driver.implicitly_wait(3)
+    channel = "https://www.youtube.com/channel/UC7gXXzu2D5rSu3NH4DJw9cw"
+    html = requests.get(channel + "/videos").text
+    info = re.search('(?<={"label":").*?(?="})', html).group()
+    url = (
+        "https://www.youtube.com/watch?v="
+        + re.search('(?<="videoId":").*?(?=")', html).group()
+    )
 
-    videos = driver.find_elements(by=By.ID, value="video-title")
-    for i in videos:
-        if "1XC3" in i.text:
-            latest_video = i.get_attribute("href")
-            break
+    if "1XC3" in info:
+        latest_video = url
 
     with open("latest_video.txt", "r") as f:
         previous_video = f.read().strip("\n")

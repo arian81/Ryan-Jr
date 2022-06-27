@@ -119,7 +119,3 @@ async def delete(message, email):
 
 
 bot.add_cog(Tasks(bot))
-
-
-if __name__ == "__main__":
-    bot.run(os.getenv("BOT_TOKEN"))
