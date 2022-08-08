@@ -25,7 +25,7 @@ class User(Base):
 
 
 engine = db.create_engine(
-    "postgresql://ndjqgujmuroukk:1620275244fa767a6a29241d81159ab9a9a04e50ecdb3a8007b386aedcae693b@ec2-54-147-33-38.compute-1.amazonaws.com:5432/d1fm818lms9gef")
+    "Database URL") #This script was designed for a postgresql database
 
 
 def check_email(email):
