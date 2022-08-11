@@ -8,7 +8,7 @@ def send_email(email, token):
     port = 465
     smtp_server_domain_name = "smtp.gmail.com"
     sender_mail = "1xc3.verify@gmail.com"
-    password = "daxjvhxyaguxxace"
+    password = "Email password"
 
     ssl_context = ssl.create_default_context()
     service = smtplib.SMTP_SSL(
